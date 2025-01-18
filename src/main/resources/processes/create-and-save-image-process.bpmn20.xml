@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="create-and-save-image-process" name="create-and-save-image-process" isExecutable="true">
+    <startEvent id="sid-8983c51f-30aa-4e0a-be21-9ea02d5ef222"/>
+    <serviceTask id="sid-802384f3-8299-4a72-868f-243250f00a77" flowable:exclusive="true" name="Request image process" flowable:delegateExpression="${processImageStep}"/>
+    <sequenceFlow id="sid-7a80ed20-050d-431e-8559-328c6c71e59b" sourceRef="sid-8983c51f-30aa-4e0a-be21-9ea02d5ef222" targetRef="sid-802384f3-8299-4a72-868f-243250f00a77"/>
+    <serviceTask id="sid-a7efa477-a348-463a-a066-072ca9efe9a2" flowable:exclusive="true" name="Save image locally" flowable:delegateExpression="${saveImageStep}"/>
+    <sequenceFlow id="sid-a35e9d21-f00e-432d-8ca7-f0951c5f5fe3" sourceRef="sid-802384f3-8299-4a72-868f-243250f00a77" targetRef="sid-a7efa477-a348-463a-a066-072ca9efe9a2"/>
+    <endEvent id="sid-ff5186b1-937d-4ce2-8b4d-ef5ae59bcc29"/>
+    <sequenceFlow id="sid-9850e9ce-02b2-453c-92e0-3d771233a575" sourceRef="sid-a7efa477-a348-463a-a066-072ca9efe9a2" targetRef="sid-ff5186b1-937d-4ce2-8b4d-ef5ae59bcc29"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_create-and-save-image-process">
+    <bpmndi:BPMNPlane bpmnElement="create-and-save-image-process" id="BPMNPlane_create-and-save-image-process">
+      <bpmndi:BPMNShape id="shape-240a298b-9d3c-4591-9e1f-1bc6f70b579e" bpmnElement="sid-8983c51f-30aa-4e0a-be21-9ea02d5ef222">
+        <omgdc:Bounds x="-210.0" y="-20.0" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-19000b32-069c-4f8f-a04f-9486f457a729" bpmnElement="sid-802384f3-8299-4a72-868f-243250f00a77">
+        <omgdc:Bounds x="-70.0" y="-45.0" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-bf41d3d4-d515-4220-b0c8-c2d81be554c0" bpmnElement="sid-7a80ed20-050d-431e-8559-328c6c71e59b">
+        <omgdi:waypoint x="-180.0" y="-5.0"/>
+        <omgdi:waypoint x="-70.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape-301a6d02-2e76-449d-98b7-7c4a315b696b" bpmnElement="sid-a7efa477-a348-463a-a066-072ca9efe9a2">
+        <omgdc:Bounds x="145.0" y="-45.0" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-966a027d-6307-4bfc-8b02-dc24eea0bb02" bpmnElement="sid-a35e9d21-f00e-432d-8ca7-f0951c5f5fe3">
+        <omgdi:waypoint x="30.0" y="-5.0"/>
+        <omgdi:waypoint x="145.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape-4724a1c0-d7a3-4793-8d7e-da03debfc4fa" bpmnElement="sid-ff5186b1-937d-4ce2-8b4d-ef5ae59bcc29">
+        <omgdc:Bounds x="350.0" y="-20.0" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-80b96a48-080c-4d65-848f-8b70a9e79bbf" bpmnElement="sid-9850e9ce-02b2-453c-92e0-3d771233a575">
+        <omgdi:waypoint x="245.0" y="-5.0"/>
+        <omgdi:waypoint x="350.0" y="-5.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

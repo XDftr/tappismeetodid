@@ -1,7 +1,7 @@
 package cc.cryptek.tappismeetodid.controller;
 
 import cc.cryptek.tappismeetodid.controller.dto.SubmissionRequestDto;
-import cc.cryptek.tappismeetodid.entity.Submission;
+import cc.cryptek.tappismeetodid.entity.SubmissionEntity;
 import cc.cryptek.tappismeetodid.service.SubmissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +18,18 @@ public class SubmissionController {
     private final SubmissionService submissionService;
 
     @PostMapping
-    public ResponseEntity<Submission> createSubmission(
+    public ResponseEntity<SubmissionEntity> createSubmission(
             @RequestBody SubmissionRequestDto dto) {
         return ResponseEntity.ok(submissionService.createSubmission(dto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Submission> getImage(@PathVariable UUID id) {
+    public ResponseEntity<SubmissionEntity> getImage(@PathVariable UUID id) {
         return ResponseEntity.ok(submissionService.getImage(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<Submission>> getAllSubmissions() {
+    public ResponseEntity<List<SubmissionEntity>> getAllSubmissions() {
         return ResponseEntity.ok(submissionService.getAllSubmissions());
     }
 

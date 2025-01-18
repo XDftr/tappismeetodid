@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1737157891443-1" author="denie">
+        <createTable tableName="images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_images"/>
+            </column>
+            <column name="created_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="DATETIME"/>
+            <column name="image_url" type="text"/>
+            <column name="external_image_url" type="text"/>
+            <column name="text" type="text"/>
+            <column name="author" type="UUID"/>
+            <column name="saved" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1737157891443-2" author="denie">
+        <createTable tableName="submissions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_submissions"/>
+            </column>
+            <column name="created_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="DATETIME"/>
+            <column name="title" type="text"/>
+            <column name="name" type="text"/>
+            <column name="country" type="text"/>
+            <column name="url" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

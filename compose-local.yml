@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: tappismeetodid-db
+    environment:
+      POSTGRES_DB: tappismeetodid
+      POSTGRES_USER: tappismeetodid_user
+      POSTGRES_PASSWORD: asdasdasdadasdasd
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tappismeetodid_user -d tappismeetodid"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - tappismeetodid-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: tappismeetodid-postgres-data
+
+networks:
+  tappismeetodid-network:
+    name: tappismeetodid-network
